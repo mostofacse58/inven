@@ -1,0 +1,72 @@
+/***** LOGIN Styles *****/
+
+body.signin {
+   
+}
+.content_section{
+	/*background-image: url('bg1.jpg');*/
+	background-color:  #d2d6de none repeat scroll 0 0 ;
+    font-family: 'PT Sans Narrow', sans-serif;
+    align-items: center;
+background: #d2d6de none repeat scroll 0 0 ;
+display: flex;
+height: 100vh;
+position: relative;
+}
+.panel-signin {
+  background-color: #BCD53E;
+  border-color: #66afe9;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.panel-signin .panel-signin-heading {
+  background-color: #00A65A;
+  border-bottom: 4px solid #006a4e;
+  color: #fff;
+}
+.signin-title{
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 20px;
+}
+.signin-title img{
+	margin-right:4px;
+}
+.btn-green {
+    background-color: #006A4E;
+    border-color: #006A4E;
+    color: #FFCC00;
+}
+.btn-green:hover,
+.btn-green:focus,
+.btn-green:active {
+    background-color: #1ba593;
+    border-color: #188f7f;
+    color: white;
+}
+.logofont {
+  height: 50px;
+  width: 75px;
+}
+.logofont img{
+	height:100%;
+	width:100%;
+}
+p {
+  color: #fff;
+  margin: 0 0 10px;
+}
+.glyphicon {
+  color: #006a4e;
+}
+#check-awesome a {
+  color: #fff;
+  text-decoration: none;
+}
+#check-awesome a {
+  color: #000;
+  text-decoration: none;
+}
+.text-muted {
+  color: #fff;
+  font-weight: 800;
+  font-size: 23px;
+}

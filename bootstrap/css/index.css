@@ -1,0 +1,22 @@
+
+body{
+	background:#EEEEEE;
+	color:#000000;
+	font-family:"Lato","sans-serif";
+}
+a{
+	color: #006A4E;
+}
+.media{
+	padding-top:10px;
+}
+.title{
+	/*font-family:*/
+	font-size:24px;
+	color:#006A4E;
+	text-transform:uppercase;
+}
+.media-body span{
+	font-size:14px;
+	color: #006A4E;
+}

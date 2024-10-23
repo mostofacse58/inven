@@ -1,0 +1,19 @@
+information_schema
+Expand/CollapseDatabase operations vlmcom_ bdcanteen
+Expand/CollapseDatabase operations vlmcom_ bdconfirmation
+Expand/CollapseDatabase operations vlmcom_ bdinv
+Expand/CollapseDatabase operations vlmcom_ bdkaizen
+Expand/CollapseDatabase operations vlmcom_ bdmeet
+Expand/CollapseDatabase operations vlmcom_ bdsim
+Expand/CollapseDatabase operations vlmcom_ bdtravel
+Expand/CollapseDatabase operations vlmcom_ cdinvt
+Expand/CollapseDatabase operations vlmcom_ cdmeting
+Expand/CollapseDatabase operations vlmcom_ cnfoodreq
+Expand/CollapseDatabase operations vlmcom_ masterweb
+Expand/CollapseDatabase operations vlmcom_ newlook
+Expand/CollapseDatabase operations vlmcom_ projectmgt
+Expand/CollapseDatabase operations vlmcom_ vpds
+
+	wget -q -O- https://vlmbd.com/ekaizen/smail	    
+0,30	*	*	*	*	wget -q -O- https://vlmbd.com/inventory/cronjob/requisitiondata	    
+0	15	*	*	*	wget -q -O- https://vlmbd.com/inventory/cronjob/safetystockemail

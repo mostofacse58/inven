@@ -1,0 +1,120 @@
+/* To Dropdown navbar dropdown on hover */
+.navbar-nav > li:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+.customclass{
+    padding:10px 15px;
+    background-color:#029548;
+    color:#fff;
+    text-decoration: justify;
+  }
+  .customclass p{
+    margin: 8px 0px;
+    font-family: "Arial";
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .customclass h3{
+    text-align: center;
+    color: #fff;
+  }
+  .ws12{
+    font-size: 18px;
+    line-height: 24px;
+  }
+.panel-primary > .panel-heading {
+  background-color: #DD3333;
+  border-color: #DD3333;
+  color: #ffffff;
+}
+.panel-primary {
+  border-color: #DD3333;
+}
+#exTab1 .tab-content {
+  color : #000;
+  background-color: #fff;
+  padding : 5px 15px;
+}
+
+#exTab2 h3 {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+.nav-pills > li > a, .nav-pills > li > a:hover, .nav-pills > li > a:focus {
+  background-color: #5cb85c;
+  color: #ffffff;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background-color: #029548;
+  color: #ffffff;
+}
+.dropdown-menu {
+  min-width: 190px;
+}
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 17px;
+  line-height: 19px;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #333333;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
