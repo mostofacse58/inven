@@ -73,7 +73,22 @@
             ?>><?php echo "$rows->file_no"; ?></option>
                 <?php } ?>
             </select>
-           </div>       
+           </div>  
+           <label class="col-sm-2 control-label">Location <span style="color:red;">  </span></label>
+            <div class="col-sm-3">
+               <select class="form-control select2" name="line_id" id="line_id">> 
+              <option value="" selected="selected">===Select Location===</option>
+              <?php foreach ($llist as $rows) { ?>
+                <option value="<?php echo $rows->line_id; ?>" 
+                <?php if (isset($info))
+                    echo $rows->line_id == $info->line_id ? 'selected="selected"' : 0;
+                else
+                    echo $rows->line_id == set_value('line_id') ? 'selected="selected"' : 0;
+                ?>><?php echo $rows->line_no; ?></option>
+                    <?php } ?>
+                </select>
+              <span class="error-msg"><?php echo form_error("line_id"); ?></span>
+            </div>     
         
         </div><!-- ///////////////////// -->
     <div class="form-group">

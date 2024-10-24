@@ -56,6 +56,7 @@ class Requisition extends My_Controller {
     if($this->session->userdata('user_id')) {
       $data['heading']='Add Requisition';
       $data['dlist']=$this->look_up_model->departmentList();
+      $data['llist']=$this->look_up_model->getFloorLine();
       $data['display']='format/addrequisition';
       $data['flist']=$this->import_model->getdata('shipping_file_style_info');
       $this->load->view('admin/master',$data);
@@ -66,6 +67,7 @@ class Requisition extends My_Controller {
   function edit($requisition_id){
     if ($this->session->userdata('user_id')) {
     $data['heading']='Edit Requisition';
+    $data['llist']=$this->look_up_model->getFloorLine();
     $data['flist']=$this->import_model->getdata('shipping_file_style_info');
     $data['dlist']=$this->look_up_model->departmentList();
     $data['info']=$this->requisition_model->get_info($requisition_id);

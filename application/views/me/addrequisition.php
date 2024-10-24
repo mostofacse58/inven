@@ -46,8 +46,8 @@
               <span class="error-msg"><?php echo form_error("department_id"); ?></span>
             </div>
                
-        <label class="col-sm-2 control-label">Location <span style="color:red;">  </span></label>
-              <div class="col-sm-2">
+            <label class="col-sm-2 control-label">Location <span style="color:red;">  </span></label>
+            <div class="col-sm-2">
                <select class="form-control select2" name="line_id" id="line_id">> 
               <option value="" selected="selected">===Select Location===</option>
               <?php foreach ($flist as $rows) { ?>
