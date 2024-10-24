@@ -27,8 +27,7 @@ class Requisitionrec_model extends CI_Model {
           LEFT JOIN user u ON(u.id=pm.requested_by) 
           WHERE pm.responsible_department=$department_id AND pm.general_or_tpm=1
           AND pm.requisition_status>2 AND pm.pr_type=1 $condition 
-
-          GROUP BY pm.requisition_id");
+        GROUP BY pm.requisition_id");
 
     }else{
       $query=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,
@@ -62,12 +61,13 @@ class Requisitionrec_model extends CI_Model {
          }
          $department_id=$this->session->userdata('department_id');
         if($this->input->get('product_code')!=''){
-          $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,
+          $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,l.location_name,
           d.department_name as responsible_department_name       
           FROM  requisition_master pm 
           LEFT JOIN requisition_item_details pmd ON(pm.requisition_id=pmd.requisition_id)
           LEFT JOIN department_info pt ON(pm.department_id=pt.department_id)
           LEFT JOIN department_info d ON(pm.responsible_department=d.department_id) 
+          LEFT JOIN location_info l ON(l.location_id=pm.location_id)
           LEFT JOIN user u ON(u.id=pm.requested_by) 
           WHERE pm.responsible_department=$department_id 
           AND pm.requisition_status>2 AND pm.general_or_tpm=1 AND pm.pr_type=1
@@ -77,11 +77,12 @@ class Requisitionrec_model extends CI_Model {
           LIMIT $start,$limit")->result();
 
         }else{
-          $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,
+          $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,l.location_name,
           d.department_name as responsible_department_name       
           FROM  requisition_master pm 
           LEFT JOIN department_info pt ON(pm.department_id=pt.department_id)
           LEFT JOIN department_info d ON(pm.responsible_department=d.department_id) 
+          LEFT JOIN location_info l ON(l.location_id=pm.location_id)
           LEFT JOIN user u ON(u.id=pm.requested_by) 
           WHERE pm.responsible_department=$department_id 
           AND pm.requisition_status>2 AND pm.general_or_tpm=1 AND pm.pr_type=1

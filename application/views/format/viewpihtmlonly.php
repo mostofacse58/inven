@@ -133,11 +133,13 @@ hr{margin: 5px}
       <th style="text-align: left" > 
       Note: <?php if(isset($info)) echo $info->other_note; ?> </th>
       <th style="text-align: left" > 
-    Standard Demand Date 标准需求日期: <?php if(isset($info)) echo findDate($info->new_demand_date); ?></th>
+       Standard Demand Date 标准需求日期: <?php if(isset($info)) echo findDate($info->new_demand_date); ?></th>
   </tr>
    <tr>
     <th style="text-align: left" > 
       Purchase Category购买类别: <?php if(isset($info)) echo $info->purchase_category; ?> </th>
+    <th style="text-align: left" > 
+      Product Type 產品類型: <?php if(isset($info)) echo $info->product_type; ?> </th>
   </tr>
  
 </table>

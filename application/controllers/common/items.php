@@ -45,6 +45,7 @@ class Items extends My_Controller {
         $this->pagination->initialize($config); 
         $data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data['pagination'] = $this->pagination->create_links();
+        $data['clist']=$this->look_up_model->getCategory(3);
         $data['list']=$this->items_model->lists($config["per_page"],$data['page'] );
         ////////////////////////////
         $data['heading']='Items List (项目清单)';
@@ -54,6 +55,7 @@ class Items extends My_Controller {
           redirect("logincontroller");
         }
        }
+
        function lists2(){
        $data=array();
        $list=$this->items_model->lists2();

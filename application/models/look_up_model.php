@@ -117,6 +117,19 @@ class Look_up_model extends CI_Model {
       ORDER BY p.product_name ASC")->result();
     return $result;
   }
+  function getdepartmentwiseItem2($department_id,$product_type,$term) {
+    $result=$this->db->query("SELECT p.*,c.category_name,u.unit_name
+     FROM product_info p
+      INNER JOIN category_info c ON(p.category_id=c.category_id)
+      LEFT JOIN product_unit u ON(p.unit_id=u.unit_id)
+      WHERE p.department_id=$department_id  
+      AND p.product_status=1
+      AND p.type='$product_type'
+      AND p.product_type=2
+      AND (p.product_code LIKE '%$term%' OR p.product_name LIKE '%$term%') 
+      ORDER BY p.product_name ASC")->result();
+    return $result;
+  }
   function getProductNamesTPM($term) {
     $department_id=$this->session->userdata('department_id');
     $data=date('Y-m-d');

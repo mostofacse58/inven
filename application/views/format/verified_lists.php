@@ -68,6 +68,7 @@ Add New PI
           <thead>
           <tr>
             <th style="text-align:center;width:10%;">Department</th>
+            <th style="text-align:center;width:8%;">Product Type</th>
             <th style="text-align:center;width:8%;">For</th>
             <th style="text-align:center;width:8%;">Type</th>
             <th style="text-align:center;width:8%">PI NO</th>
@@ -89,6 +90,7 @@ Add New PI
               ?>
           <tr>
             <td class="text-center"><?php echo $row->department_name; ?></td>
+            <td class="text-center"><?php echo $row->product_type; ?></td>
             <td class="text-center"><?php 
             if($row->pi_type==1) echo "Safety Item"; 
             else echo "Fixed Asset"; ?></td>

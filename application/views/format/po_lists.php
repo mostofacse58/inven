@@ -99,6 +99,7 @@ Add New PO
       <th style="width:4%;">SN</th>
       <th style="text-align:center;width:6%;">Type</th>
       <th style="width:10%;">For Department</th>
+      <th style="text-align:center;width:8%;">Prodcut Type</th>
       <th style="width:7%;">PO/WO NO</th>      
       <th style="width:8%;">PO Date</th>
       <th style="text-align:center;width:8%">
@@ -120,6 +121,7 @@ Add New PO
       <td class="text-center"><?php echo $i++; ?></td>
       <td class="text-center"><?php echo $row->po_type;?></td>
       <td class="text-center"><?php echo $row->for_department_name; ?></td>
+      <td class="text-center"><?php echo $row->product_type;?></td>
       <td class="text-center"><?php echo $row->po_number; ?></td>
       <td class="text-center"><?php echo findDate($row->po_date); ?></td>
       <td class="text-center"><?php echo findDate($row->delivery_date); ?></td>

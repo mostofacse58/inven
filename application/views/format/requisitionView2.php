@@ -66,9 +66,11 @@ hr{margin: 5px}
   </tr>
   <tr>
     <th style="text-align: left" > 
+      Location: <?php if(isset($info)) echo  $info->location_name; ?> 
+    </th>
+    <th style="text-align: left" > 
       File No: <?php if(isset($info)) echo  $info->file_no; ?> 
     </th>
-  
   </tr>
 </table>
 

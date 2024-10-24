@@ -172,10 +172,11 @@ function add(){
   public function suggestions(){
       $term = $this->input->get('term', true);
       $for_department_id = $this->input->get('for_department_id', true);
+      $product_type = $this->input->get('product_type', true);
       if (strlen($term) < 1 || !$term) {
           die("<script type='text/javascript'>setTimeout(function(){ window.top.location.href = '" . base_url('dashboard') . "'; }, 10);</script>");
       }
-      $rows = $this->look_up_model->getdepartmentwiseItem($for_department_id,$term);
+      $rows = $this->look_up_model->getdepartmentwiseItem2($for_department_id,$product_type,$term);
       if ($rows){
           $c = str_replace(".", "", microtime(true));
           $r = 0;
@@ -205,11 +206,13 @@ function add(){
   public function getcount(){
     $supplier_id = $this->input->post('supplier_id');
     $department_id = $this->input->post('for_department_id');
+    $product_type = $this->input->post('product_type');
     $detail=$this->db->query("SELECT prd.*
       FROM pi_item_details  prd,pi_master pm 
       WHERE prd.supplier_id=$supplier_id 
       AND prd.pi_id=pm.pi_id AND pm.pi_status=7
       AND prd.department_id=$department_id 
+      AND pm.product_type='$product_type' 
       AND  prd.supplier_id NOT IN(SELECT po.supplier_id FROM po_pline po
       WHERE po.product_id=prd.product_id AND prd.pi_no=po.pi_no) ")->result();
     echo count($detail);
@@ -218,12 +221,15 @@ function add(){
   public function getSuppItem(){
     $supplier_id = $this->input->post('supplier_id');
     $department_id = $this->input->post('for_department_id');
+    $product_type = $this->input->post('product_type');
     $detail=$this->db->query("SELECT prd.*,pm.pi_no
       FROM pi_item_details  prd, pi_master pm 
       WHERE prd.supplier_id=$supplier_id 
-      AND prd.pi_id=pm.pi_id AND pm.pi_status=7
+      AND prd.pi_id=pm.pi_id 
+      AND pm.pi_status=7
       AND prd.department_id=$department_id 
-      AND  prd.supplier_id NOT IN(SELECT po.supplier_id FROM po_pline po
+      AND pm.product_type='$product_type' 
+      AND prd.supplier_id NOT IN(SELECT po.supplier_id FROM po_pline po
       WHERE po.product_id=prd.product_id 
       AND prd.pi_no=po.pi_no) ")->result();
     $i=0;

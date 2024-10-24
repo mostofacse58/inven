@@ -68,6 +68,7 @@ function getprwiseitem(){
       $('#take_department_id').val(data1.department_id).change();
       $('#file_no').val(data1.file_no).change();
       $("#employee_id").val(data1.employee_id);
+      $('#location_id').val(data1.location_id).change();
       if(data1.employee_id==''){
         $('#issue_type').val("2").change();  
       }   
@@ -396,7 +397,7 @@ $(document).ready(function(){
            <span class="error-msg"><?php echo form_error("issue_type");?></span>
          </div>
          <label class="col-sm-2 control-label ">Requisition No <span style="color:red;"> </span></label>
-          <div class="col-sm-2">
+          <div class="col-sm-3">
            <input type="text" name="requisition_no" id="requisition_no" class="form-control pull-right" value="<?php if(isset($info)) echo $info->requisition_no; else echo set_value('requisition_no'); ?>" <?php if (!isset($info)){ ?> onkeyup="return getprwiseitem();" <?php } ?> >
            <span class="error-msg"><?php echo form_error("requisition_no");?></span>
          </div>
@@ -426,17 +427,17 @@ $(document).ready(function(){
          </div>
          <div class="form-group">
            <label class="col-sm-2 control-label locationDiv">Location <span style="color:red;">  *</span></label>
-          <div class="col-sm-3 locationDiv">
-            <select class="form-control select2" name="location_id" id="location_id" style="width: 100%" required="">
-              <option value="">Select Location</option>
-              <?php foreach ($llist as $value) {  ?>
-                <option value="<?php echo $value->location_id; ?>"
-                  <?php  if(isset($info)) echo $value->location_id==$info->location_id? 'selected="selected"':0; else echo set_select('location_id',$value->location_id);?>>
-                  <?php echo $value->location_name; ?></option>
-                <?php } ?>
-            </select>
-           <span class="error-msg"><?php echo form_error("location_id");?></span>
-          </div>
+            <div class="col-sm-3 locationDiv">
+              <select class="form-control select2" name="location_id" id="location_id" style="width: 100%" required="">
+                <option value="">Select Location</option>
+                <?php foreach ($llist as $value) {  ?>
+                  <option value="<?php echo $value->location_id; ?>"
+                    <?php  if(isset($info)) echo $value->location_id==$info->location_id? 'selected="selected"':0; else echo set_select('location_id',$value->location_id);?>>
+                    <?php echo $value->location_name; ?></option>
+                  <?php } ?>
+              </select>
+             <span class="error-msg"><?php echo form_error("location_id");?></span>
+            </div>
          <!--  <div class="col-sm-1 locationDiv">
             <a href="javascript:;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#partyModal"><i class="fa fa-plus"></i></a>
           </div> -->

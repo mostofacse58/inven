@@ -29,11 +29,12 @@ class Requisitionapp_model extends CI_Model {
             $condition=$condition."  AND pm.requisition_no='$requisition_no' ";
           }
          }
-        $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,
+        $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,l.location_name,
           d.department_name as responsible_department_name       
           FROM  requisition_master pm 
           LEFT JOIN department_info pt ON(pm.department_id=pt.department_id)
-          LEFT JOIN department_info d ON(pm.responsible_department=d.department_id) 
+          LEFT JOIN department_info d ON(pm.responsible_department=d.department_id)
+          LEFT JOIN location_info l ON(l.location_id=pm.location_id) 
           LEFT JOIN user u ON(u.id=pm.requested_by) 
           WHERE pm.department_id=$department_id AND pm.requisition_status>1 
           AND pm.general_or_tpm=1 AND pm.pr_type=1 $condition

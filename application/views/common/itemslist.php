@@ -19,10 +19,35 @@ Add New 添新
             <div class="box-body">
               <form class="form-horizontal" action="<?php echo base_url();?>common/items/lists" method="POST" enctype="multipart/form-data">
               <div class="form-group">
+                <label class="col-sm-2 control-label">Category Name分类名称<span style="color:red;">  *</span></label>
+                  <div class="col-sm-3">
+                    <select class="form-control select2" required name="category_id" id="category_id">
+                      <option value="All">All</option>
+                      <?php foreach ($clist as $value) {  ?>
+                        <option value="<?php echo $value->category_id; ?>"
+                          <?php  if(isset($info)) echo $value->category_id==$info->category_id? 'selected="selected"':0; else echo set_select('category_id',$value->category_id);?>>
+                          <?php echo $value->category_name; ?></option>
+                        <?php } ?>
+                    </select>
+                   <span class="error-msg"><?php echo form_error("category_id");?></span>
+                  </div>
                 <label class="col-sm-3 control-label">Iteam Code物料编码/Name 名称</label>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                   <input type="text" name="product_code" class="form-control" placeholder="Item Code 项目代码/NAME" value="<?php  echo set_value('product_code'); ?>" autofocus>
                 </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Type<span style="color:red;">  *</span></label>
+               <div class="col-sm-3">
+                <select class="form-control" name="type" id="type" required="">
+                  <option value="All">All</option>
+                  <option value="PRODUCT"
+                    <?php if(isset($info)) echo 'PRODUCT'==$info->type? 'selected="selected"':0; else echo set_select('type','PRODUCT');?>>PRODUCT</option>
+                    <option value="SERVICE"
+                    <?php if(isset($info)) echo 'SERVICE'==$info->type? 'selected="selected"':0; else echo set_select('type','SERVICE');?>>SERVICE</option>
+                </select>
+               <span class="error-msg"><?php echo form_error("type");?></span>
+             </div>
                 <div class="col-sm-1">
                 <button type="submit" class="btn btn-success pull-left"> Search 搜索 </button>
               </div>
@@ -35,6 +60,7 @@ Add New 添新
               <table id="" class="table table-bordered table-striped" style="width:120%;border:#000" >
                 <thead>
               <tr>
+                  <th style="width:5%;">Type</th>
                   <th style="width:15%;">English Name英文名称</th>
                   <th style="width:15%;">Chinese name中文名称</th>
                   <th style="width:10%">Category 类别</th>
@@ -54,6 +80,7 @@ Add New 添新
                 foreach($list as $row):
                     ?>
                   <tr>
+                    <td><?php echo $row->type;?></td>
                     <td><?php echo $row->product_name;?></td>
                     <td style="text-align:center">
                       <?php echo $row->china_name; ?></td>

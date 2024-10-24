@@ -26,11 +26,12 @@ class Requisition_model extends CI_Model {
             $condition=$condition."  AND pm.requisition_no='$requisition_no' ";
           }
          }
-        $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,
+        $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,l.location_name,
           d.department_name as responsible_department_name       
           FROM  requisition_master pm 
           LEFT JOIN department_info pt ON(pm.department_id=pt.department_id)
           LEFT JOIN department_info d ON(pm.responsible_department=d.department_id) 
+          LEFT JOIN location_info l ON(l.location_id=pm.location_id)
           LEFT JOIN user u ON(u.id=pm.requested_by) 
           WHERE pm.department_id=$department_id AND pm.general_or_tpm=1 AND pm.pr_type=1 $condition
           ORDER BY pm.requisition_id DESC, pm.requisition_status ASC LIMIT $start,$limit")->result();
@@ -40,11 +41,12 @@ class Requisition_model extends CI_Model {
       $department_id=$this->session->userdata('department_id');
          $result=$this->db->query("SELECT pm.*,pt.department_name,
           u.user_name as requested_by,h.user_name as dept_head,
-          a.user_name as approved_by,e.employee_name,
+          a.user_name as approved_by,e.employee_name,l.location_name,
           d.department_name as responsible_department_name       
           FROM  requisition_master pm 
           LEFT JOIN department_info pt ON(pm.department_id=pt.department_id)
           LEFT JOIN department_info d ON(pm.responsible_department=d.department_id)
+          LEFT JOIN location_info l ON(l.location_id=pm.location_id)
           LEFT JOIN user h ON(h.id=pm.dept_head) 
           LEFT JOIN user a ON(a.id=pm.approved_by) 
           LEFT JOIN user u ON(u.id=pm.requested_by)
@@ -65,6 +67,7 @@ class Requisition_model extends CI_Model {
       $data['other_note']=$this->input->post('other_note');
       $data['asset_encoding']=trim($this->input->post('asset_encoding')," ");
       $data['file_no']=$this->input->post('file_no');
+      $data['location_id']=$this->input->post('location_id');
       $data['create_date']=date('Y-m-d');
       //////////////////////////////
       $product_id=$this->input->post('product_id');

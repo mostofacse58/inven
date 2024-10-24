@@ -41,6 +41,7 @@ Add Requisition
             <th style="width:4%;">SN</th>
             <th style="width:10%;">From Department</th>
             <th style="width:10%;">To Department</th>
+            <th style="width:10%;">Location</th>
             <th style="text-align:center;width:10%">Requisition NO</th>
             <th style="width:10%;">Requisition Date</th>
             <th style="text-align:center;width:10%">Demand Date</th>
@@ -59,6 +60,7 @@ Add Requisition
             <td class="text-center"><?php echo $row->department_name; ?></td>
             <td class="text-center">
               <?php echo $row->responsible_department_name; ?></td>
+            <td class="text-center"><?php echo $row->location_name; ?></td>
             <td class="text-center"><?php echo $row->requisition_no; ?></td>
             <td class="text-center"><?php echo findDate($row->requisition_date); ?></td>
             <td class="text-center"><?php echo findDate($row->demand_date); ?></td>

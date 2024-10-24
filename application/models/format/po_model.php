@@ -192,6 +192,7 @@ class Po_model extends CI_Model {
     function save($po_id) {
         $data=array();
         $data['po_type']=$this->input->post('po_type');
+        $data['product_type']=$this->input->post('product_type');
         $data['po_date']=alterDateFormat($this->input->post('po_date'));
         $data['delivery_date']=alterDateFormat($this->input->post('delivery_date'));
         if($this->input->post('delivery_date2')!='')

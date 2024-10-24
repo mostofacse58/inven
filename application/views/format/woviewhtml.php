@@ -59,7 +59,8 @@ else echo "(Bangladesh Fty)"; ?></b>
     <td style="text-align: left"> 
        Phone:<?php if(isset($info)) echo $info->phone_no; ?> </td>
     <td style="text-align: left" > 
-       </td>
+       Product Type 產品類型: <?php if(isset($info)) echo $info->product_type; ?>
+      </td>
   </tr>
 <?php }else{ ?>
   <tr>

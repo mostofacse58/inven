@@ -91,6 +91,7 @@ class Deptrequisn_model extends CI_Model {
     }
     function save($pi_id) {
         $data=array();
+        $data['product_type']='PRODUCT';
         $data['purchase_type_id']=$this->input->post('purchase_type_id');
         $data['pi_no']=$this->input->post('pi_no');
         $data['pi_date']=alterDateFormat($this->input->post('pi_date'));

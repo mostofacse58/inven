@@ -69,6 +69,8 @@ hr{margin: 5px}
    <tr>
     <th style="text-align: left" > 
       Purchase Category购买类别: <?php if(isset($info)) echo $info->purchase_category; ?> </th>
+    <th style="text-align: left" > 
+      Product Type 產品類型: <?php if(isset($info)) echo $info->product_type; ?> </th>
   </tr>
   
 </table>

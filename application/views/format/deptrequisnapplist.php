@@ -63,6 +63,7 @@
           <tr>
             <th style="width:4%;">SN</th>
             <th style="width:10%;">Department</th>
+            <th style="text-align:center;width:8%;">Product Type</th>
             <th style="width:8%;">REF. NO</th>
             <th style="text-align:center;width:8%;">Type</th>
             <th style="text-align:center;width:8%">PI NO</th>
@@ -83,6 +84,7 @@
           <tr>
       <td class="text-center"><?php echo $i++; ?></td>
       <td class="text-center"><?php echo $row->department_name; ?></td>
+      <td class="text-center"><?php echo $row->product_type; ?></td>
       <td class="text-center"><?php echo $row->reference_no; ?></td>
       <td class="text-center"><?php 
       if($row->purchase_type_id==1||$row->purchase_type_id==2) echo "Overseas"; 

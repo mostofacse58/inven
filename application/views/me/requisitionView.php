@@ -49,6 +49,11 @@ hr{margin: 5px}
     <th style="text-align: left" > 
      Note : <?php if(isset($info)) echo $info->other_note; ?></th>
   </tr>
+  <tr>
+    <th style="text-align: left" > 
+      Line No: <?php if(isset($info)) echo  $info->line_no; ?> 
+    </th>
+  </tr>
 </table>
 
 <br>

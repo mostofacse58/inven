@@ -86,6 +86,20 @@
           </div>
         </div>
         <div class="form-group">
+          <label class="col-sm-2 control-label">Product Type <span style="color:red;">  *</span></label>
+        <div class="col-sm-2">
+          <select class="form-control select2" name="product_type" id="product_type" onchange="return getSuppItem();">
+            <option value="PRODUCT" 
+              <?php if (isset($info))
+                  echo "PRODUCT" == $info->product_type ? 'selected="selected"' : 0; else echo "PRODUCT" == set_value('product_type') ? 'selected="selected"' : 0;
+              ?>>PRODUCT</option>
+            <option value="SERVICE" 
+              <?php if (isset($info))
+                  echo "SERVICE" == $info->product_type ? 'selected="selected"' : 0; else echo "SERVICE" == set_value('product_type') ? 'selected="selected"' : 0;
+              ?>>SERVICE</option>
+          </select>
+          <span class="error-msg"><?php echo form_error("product_type");?></span>
+        </div>
          <label class="col-sm-2 control-label ">Supplier 供应商名称<span style="color:red;">  *</span></label>
           <div class="col-sm-4">
           <select class="form-control select2" name="supplier_id" id="supplier_id" style="width: 100%" required  onchange="return getSuppItem();"> 
@@ -384,11 +398,16 @@ if(isset($info)){
 function getSuppItem(){
       var supplier_id=$("#supplier_id").val();
       var for_department_id=$("#for_department_id").val();
-      if(supplier_id !=''&&for_department_id!=''){
+      var product_type=$("#product_type").val();
+      if(supplier_id !=''&&for_department_id!=''&&product_type!=''){
       $.ajax({
         type:"post",
         url:"<?php echo base_url()?>"+'format/po/getSuppItem',
-        data:{supplier_id:supplier_id,for_department_id:for_department_id},
+        data:{
+          supplier_id:supplier_id,
+          for_department_id:for_department_id,
+          product_type:product_type
+        },
         success:function(data){
           $("#form-table tbody").empty();
           $("#form-table tbody").append(data);
@@ -398,7 +417,11 @@ function getSuppItem(){
       $.ajax({
         type:"post",
         url:"<?php echo base_url()?>"+'format/po/getcount',
-        data:{supplier_id:supplier_id,for_department_id:for_department_id},
+        data:{supplier_id:supplier_id,
+        for_department_id:for_department_id,
+        product_type:product_type
+
+      },
         success:function(data){
            id=data;
            totalSum();
@@ -486,7 +509,8 @@ $(document).ready(function(){
             dataType: "json",
             data: {
                 term: request.term,
-                for_department_id: $('#for_department_id').val()
+                for_department_id: $('#for_department_id').val(),
+                product_type: $('#product_type').val()
             },
             success: function (data) {
                 $(this).removeClass('ui-autocomplete-loading');

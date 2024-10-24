@@ -95,6 +95,7 @@
           <tr>
             <th style="text-align:center;width:4%;">SN</th>
             <th style="text-align:center;width:10%;">Department</th>
+            <th style="text-align:center;width:8%;">Product Type</th>
             <th style="text-align:center;width:8%;">For</th>
             <th style="text-align:center;width:8%;">Type</th>
             <th style="text-align:center;width:8%">PI NO</th>
@@ -115,12 +116,9 @@
           <tr>
       <td class="text-center"><?php echo $i++; ?></td>
       <td class="text-center"><?php echo $row->department_name; ?></td>
-      <td class="text-center"><?php 
-      if($row->pi_type==1) echo "Safety Item"; 
-            else echo "Fixed Asset"; ?></td>
-      <td class="text-center"><?php 
-      if($row->purchase_type_id==1||$row->purchase_type_id==2) echo "Overseas"; 
-            else echo "Local"; ?></td>
+      <td class="text-center"><?php echo $row->product_type; ?></td>
+      <td class="text-center"><?php  if($row->pi_type==1) echo "Safety Item";  else echo "Fixed Asset"; ?></td>
+      <td class="text-center"><?php  if($row->purchase_type_id==1||$row->purchase_type_id==2) echo "Overseas"; else echo "Local"; ?></td>
       <td class="text-center"><?php echo $row->pi_no; ?></td>
       <td class="text-center"><?php echo findDate($row->pi_date); ?></td>
       <td class="text-center"><?php echo findDate($row->demand_date); ?></td>

@@ -200,7 +200,13 @@ class Issued extends My_Controller {
           FROM  requisition_master pm 
           LEFT JOIN product_detail_info pd ON(pd.asset_encoding=pm.asset_encoding OR pd.tpm_serial_code=pm.asset_encoding OR pd.ventura_code=pm.asset_encoding)
           WHERE pm.requisition_no='$requisition_no' AND pm.general_or_tpm=1")->row();
-      $data=array('department_id'=>$info->department_id,'employee_id'=>$info->employee_id,'asset_encoding'=>$info->asset_encoding,'product_detail_id'=>$info->product_detail_id,'file_no'=>$info->file_no);
+      $data=array('department_id'=>$info->department_id,
+        'employee_id'=>$info->employee_id,
+        'asset_encoding'=>$info->asset_encoding,
+        'product_detail_id'=>$info->product_detail_id,
+        'line_id'=>$info->line_id,
+        'location_id'=>$info->location_id,
+        'file_no'=>$info->file_no);
       echo  json_encode($data);
     }
     public function getprwiseitem(){

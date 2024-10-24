@@ -77,7 +77,7 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">Purchase Category <span style="color:red;">  *</span></label>
         <div class="col-sm-2">
-          <select class="form-control select2" name="purchase_category" id="purchase_category">
+            <select class="form-control select2" name="purchase_category" id="purchase_category">
             <option value="Normal" 
               <?php if (isset($info))
                   echo "Normal" == $info->purchase_category ? 'selected="selected"' : 0; else echo "Normal" == set_value('purchase_category') ? 'selected="selected"' : 0;
@@ -86,11 +86,25 @@
               <?php if (isset($info))
                   echo "Urgent" == $info->purchase_category ? 'selected="selected"' : 0; else echo "Urgent" == set_value('purchase_category') ? 'selected="selected"' : 0;
               ?>>Urgent</option>
-          </select>
-          <span class="error-msg"><?php echo form_error("purchase_category");?></span>
+            </select>
+            <span class="error-msg"><?php echo form_error("purchase_category");?></span>
           </div>
-          <label class="col-sm-2 control-label">Note<span style="color:red;">  </span></label>
-           <div class="col-sm-6">
+          <label class="col-sm-2 control-label">Product Type <span style="color:red;">  *</span></label>
+          <div class="col-sm-2">
+            <select class="form-control select2" name="product_type" id="product_type">
+              <option value="PRODUCT" 
+                <?php if (isset($info))
+                    echo "PRODUCT" == $info->product_type ? 'selected="selected"' : 0; else echo "PRODUCT" == set_value('product_type') ? 'selected="selected"' : 0;
+                ?>>PRODUCT</option>
+              <option value="SERVICE" 
+                <?php if (isset($info))
+                    echo "SERVICE" == $info->product_type ? 'selected="selected"' : 0; else echo "SERVICE" == set_value('product_type') ? 'selected="selected"' : 0;
+                ?>>SERVICE</option>
+            </select>
+            <span class="error-msg"><?php echo form_error("product_type");?></span>
+          </div>
+          <label class="col-sm-1 control-label">Note<span style="color:red;">  </span></label>
+           <div class="col-sm-3">
            <input type="text" name="other_note" id="other_note" class="form-control" placeholder="Note" value="<?php if(isset($info->other_note)) echo $info->other_note; else echo set_value('other_note'); ?>">
            <span class="error-msg"><?php echo form_error("other_note");?></span>
          </div>         
@@ -240,9 +254,9 @@ $(function () {
    this.select(); 
  });
     $('.date').datepicker({
-        "format": "dd/mm/yyyy",
-        "todayHighlight": true,
-        "autoclose": true
+      "format": "dd/mm/yyyy",
+      "todayHighlight": true,
+      "autoclose": true
     });
 
     $('.date1').datepicker({
@@ -280,6 +294,7 @@ var selectfile='<?php if(isset($flist))
      foreach ($flist as $rows) {  ?><option value="<?php echo $rows->file_no; ?>"><?php echo "$rows->file_no";?></option><?php }} ?> ';
 
 $(document).ready(function(){
+
   <?php if(!isset($copy)){ ?>
   $("#purchase_type_id").change(function() {
     var purchase_type_id= $("#purchase_type_id").val();
@@ -326,15 +341,15 @@ $("#AddManualItem").click(function(){
     '<td><select name="file_no[]"  class="form-control pull-left select2" style="width:100%;"  id="file_no_' + id + '" ><option value="" selected="selected">NO</option>'+selectfile+'</select> </td>' +
     '<td class="remarks"><textarea  name="remarks[]" class="form-control" placeholder="Remarks"  style="margin-bottom:0px;width:98%;padding: 2px 9px;" rows="2" id="remarks_' + id + '"></textarea> </td>' +
     ' <td style="text-align:center"> <span class="btn btn-danger btn-xs" onclick="return deleter(' + id + ');" style="margin-top:5px;"><i class="fa fa-trash-o"></i> </span> </td> </tr>';
-$("#form-table tbody").append(nodeStr);
-      updateRowNo();
-      id++;
-      prid++;
-    }else{
-      $("#alertMessageHTML").html("Please select purchase type!!");
-      $("#alertMessagemodal").modal("show");
-    }
-});
+    $("#form-table tbody").append(nodeStr);
+          updateRowNo();
+          id++;
+          prid++;
+        }else{
+          $("#alertMessageHTML").html("Please select purchase type!!");
+          $("#alertMessagemodal").modal("show");
+        }
+      });
   ///////  Search 搜索 Item Barcode or QCODE or Put Name //////////////////
   $("#add_item").autocomplete({
         source: function (request, response) {
@@ -344,7 +359,8 @@ $("#form-table tbody").append(nodeStr);
             dataType: "json",
             data: {
                 term: request.term,
-                responsible_department: $('#responsible_department').val()
+                responsible_department: $('#responsible_department').val(),
+                product_type: $('#product_type').val()
             },
             success: function (data) {
                 $(this).removeClass('ui-autocomplete-loading');

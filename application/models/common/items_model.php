@@ -3,10 +3,19 @@ class Items_model extends CI_Model {
   public function get_count(){
     $condition=' ';
     if($_POST){
+        $category_id=$this->input->post('category_id');
+        if($category_id!='All'){
+          $condition.=" AND p.category_id=$category_id ";
+        }
+        $type=$this->input->post('type');
+        if($type!='All'){
+          $condition.=" AND p.type='$type' ";
+        }
         if($this->input->post('product_code')!=''){
           $product_code=$this->input->post('product_code');
           $condition=$condition."  AND (p.product_code LIKE '%$product_code%' OR p.product_name LIKE '%$product_code%') ";
         }
+        
       }
     $department_id=$this->session->userdata('department_id');
       $query=$this->db->query("SELECT * FROM product_info p
@@ -20,6 +29,14 @@ class Items_model extends CI_Model {
       $department_id=$this->session->userdata('department_id');
       $condition=' ';
       if($_POST){
+        $category_id=$this->input->post('category_id');
+        if($category_id!='All'){
+          $condition.=" AND p.category_id=$category_id ";
+        }
+        $type=$this->input->post('type');
+        if($type!='All'){
+          $condition.=" AND p.type='$type' ";
+        }
         if($this->input->post('product_code')!=''){
           $product_code=$this->input->post('product_code');
           $condition=$condition."  AND (p.product_code LIKE '%$product_code%' OR p.product_name LIKE '%$product_code%') ";
@@ -82,6 +99,7 @@ class Items_model extends CI_Model {
           $upload_info1 = $this->upload->data();
           $data['product_image']=$upload_info1['file_name'];
         } }
+        $data['type']=$this->input->post('type');
         $data['product_model']=$this->input->post('product_model');
         $data['product_name']=$this->input->post('product_name');
         $data['china_name']=$this->input->post('china_name');

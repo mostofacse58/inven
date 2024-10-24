@@ -92,6 +92,7 @@
       <th style="width:4%;">SN</th>
       <th style="text-align:center;width:8%;">Type</th>
       <th style="width:10%;">For Department</th>
+      <th style="text-align:center;width:8%;">Prodcut Type</th>
       <th style="width:8%;">PO/WO NO</th>      
       <th style="width:8%;">PO Date</th>
       <th style="text-align:center;width:8%">

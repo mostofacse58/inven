@@ -30,6 +30,18 @@
     <form class="form-horizontal" action="<?php echo base_url();?>common/items/save<?php if(isset($info)) echo "/$info->product_id"; ?>" method="POST" enctype="multipart/form-data">
       <div class="box-body">
         <div class="form-group">
+          <label class="col-sm-2 control-label">Type<span style="color:red;">  *</span></label>
+           <div class="col-sm-3">
+            <select class="form-control" name="type" id="type" required="">
+              <option value="PRODUCT"
+                <?php if(isset($info)) echo 'PRODUCT'==$info->type? 'selected="selected"':0; else echo set_select('type','PRODUCT');?>>PRODUCT</option>
+                <option value="SERVICE"
+                <?php if(isset($info)) echo 'SERVICE'==$info->type? 'selected="selected"':0; else echo set_select('type','SERVICE');?>>SERVICE</option>
+            </select>
+           <span class="error-msg"><?php echo form_error("type");?></span>
+         </div>
+        </div>
+        <div class="form-group">
           <label class="col-sm-2 control-label">English Name英文名称<span style="color:red;">  *</span></label>
           <div class="col-sm-4">
             <input type="text" name="product_name" required class="form-control" placeholder="English Name英文名称" value="<?php if(isset($info->product_name)) echo $info->product_name; else echo set_value('product_name'); ?>">

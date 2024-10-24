@@ -74,21 +74,18 @@
                 <?php } ?>
             </select>
            </div>  
-           <label class="col-sm-2 control-label">Location <span style="color:red;">  </span></label>
+           <label class="col-sm-2 control-label ">Location <span style="color:red;">  *</span></label>
             <div class="col-sm-3">
-               <select class="form-control select2" name="line_id" id="line_id">> 
-              <option value="" selected="selected">===Select Location===</option>
-              <?php foreach ($llist as $rows) { ?>
-                <option value="<?php echo $rows->line_id; ?>" 
-                <?php if (isset($info))
-                    echo $rows->line_id == $info->line_id ? 'selected="selected"' : 0;
-                else
-                    echo $rows->line_id == set_value('line_id') ? 'selected="selected"' : 0;
-                ?>><?php echo $rows->line_no; ?></option>
-                    <?php } ?>
-                </select>
-              <span class="error-msg"><?php echo form_error("line_id"); ?></span>
-            </div>     
+              <select class="form-control select2" name="location_id" id="location_id" style="width: 100%" required="">
+                <option value="">Select Location</option>
+                <?php foreach ($llist as $value) {  ?>
+                  <option value="<?php echo $value->location_id; ?>"
+                    <?php  if(isset($info)) echo $value->location_id==$info->location_id? 'selected="selected"':0; else echo set_select('location_id',$value->location_id);?>>
+                    <?php echo $value->location_name; ?></option>
+                  <?php } ?>
+              </select>
+             <span class="error-msg"><?php echo form_error("location_id");?></span>
+            </div>    
         
         </div><!-- ///////////////////// -->
     <div class="form-group">

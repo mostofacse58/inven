@@ -117,6 +117,7 @@ class Deptrequisn_model extends CI_Model {
     function save($pi_id) {
         $data=array();
         $data['purchase_type_id']=$this->input->post('purchase_type_id');
+        $data['product_type']=$this->input->post('product_type');
         $data['pi_no']=trim($this->input->post('pi_no'));
         $data['pi_date']=alterDateFormat($this->input->post('pi_date'));
         $data['demand_date']=alterDateFormat($this->input->post('demand_date'));
@@ -248,12 +249,15 @@ class Deptrequisn_model extends CI_Model {
 
   function getRequisitionProduct($term) {
     $department_id=$this->session->userdata('department_id');
+    $product_type = $this->input->get('product_type', true);
     $medical_yes=$this->session->userdata('medical_yes');
     $result=$this->db->query("SELECT p.*,c.category_name,u.unit_name
      FROM product_info p
       INNER JOIN category_info c ON(p.category_id=c.category_id)
       INNER JOIN product_unit u ON(p.unit_id=u.unit_id)
-      WHERE p.department_id=$department_id AND p.product_type=2  
+      WHERE p.department_id=$department_id 
+      AND p.product_type=2  
+      AND p.type='$product_type' 
       AND (p.product_code LIKE '%$term%' or p.product_name LIKE '%$term%') 
       ORDER BY p.product_name ASC")->result();
     return $result;
