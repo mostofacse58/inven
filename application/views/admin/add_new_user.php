@@ -87,7 +87,21 @@
                             <span class="error-msg"><?php echo form_error("pa_limit"); ?></span>
                         </div>
                     </div>
-                    
+                    <div class="form-group">
+                    <label class="col-sm-4 control-label">Main Area <span style="color:red;">  </span></label>
+                      <div class="col-sm-8">
+                        <select class="form-control select2" name="mlocation_id" id="mlocation_id">
+                        <option value="" selected="selected">Select Area</option>
+                        <?php $mdlist=$this->db->query("SELECT * FROM main_location")->result();
+                        foreach($mdlist as $rows){  ?>
+                        <option value="<?php echo $rows->mlocation_id; ?>" 
+                          <?php if(isset($info->mlocation_id))echo $rows->mlocation_id==$info->mlocation_id? 'selected="selected"':0; else
+                           echo $rows->mlocation_id==set_value('mlocation_id')? 'selected="selected"':0; ?>><?php echo $rows->mlocation_name; ?></option>
+                        <?php }  ?>
+                        </select>                    
+                        <span class="error-msg"><?php echo form_error("mlocation_id");?></span>
+                      </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label"> Update Permission</label>
                         <div class="col-sm-8">

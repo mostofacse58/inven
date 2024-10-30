@@ -97,7 +97,7 @@ hr{margin: 5px}
     <?php if(isset($info)) echo "$info->requested_by"; ?></td>
   <td style="width:25%;text-align:center">
     <?php if($info->requisition_status>2) echo "$info->dept_head"; ?></td>
-  <td style="width:25%;text-align:center"></td>
+  <td style="width:25%;text-align:center"><?php if($info->requisition_status>3) echo "$info->approved_by"; ?></td>
   <td style="width:25%;text-align:right">
     <?php if($info->requisition_status>3) echo "$info->approved_by"; ?></td>
   </tr>
@@ -106,7 +106,7 @@ hr{margin: 5px}
     <?php if(isset($info)) echo $info->submited_date_time; ?></td>
   <td style="width:25%;text-align:center">
     <?php if($info->requisition_status>2) echo "$info->aproved_date_time"; ?></td>
-  <td style="width:25%;text-align:center"></td>
+  <td style="width:25%;text-align:center"><?php if($info->requisition_status>3) echo $info->delivery_date; ?></td>
   <td style="width:25%;text-align:right">
     <?php if($info->requisition_status>3) echo $info->delivery_date; ?></td>
   </tr>

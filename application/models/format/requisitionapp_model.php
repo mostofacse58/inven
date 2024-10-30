@@ -1,19 +1,26 @@
 <?php
 class Requisitionapp_model extends CI_Model {
 	public function get_count(){
-    $condition=' ';
-    if(isset($_GET)){
-      if($this->input->get('requisition_no')!=''){
-        $requisition_no=$this->input->get('requisition_no');
-        $condition=$condition."  AND pm.requisition_no='$requisition_no' ";
-      }
-     }
-    $department_id=$this->session->userdata('department_id');
+      $department_id=$this->session->userdata('department_id');
+      $mlocation_id=$this->session->userdata('mlocation_id');
+      $condition=' ';
+      if($mlocation_id!=''){
+          $condition=$condition."  AND l.mlocation_id='$mlocation_id' ";
+        }
+      
+      if(isset($_GET)){
+        if($this->input->get('requisition_no')!=''){
+          $requisition_no=$this->input->get('requisition_no');
+          $condition=$condition."  AND pm.requisition_no='$requisition_no' ";
+        }
+       }
+
       $query=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,
           d.department_name as responsible_department_name       
           FROM  requisition_master pm 
           LEFT JOIN department_info pt ON(pm.department_id=pt.department_id)
           LEFT JOIN department_info d ON(pm.responsible_department=d.department_id) 
+          LEFT JOIN location_info l ON(l.location_id=pm.location_id) 
           LEFT JOIN user u ON(u.id=pm.requested_by) 
           WHERE pm.department_id=$department_id 
           AND pm.requisition_status>1 AND pm.pr_type=1 AND pm.general_or_tpm=1 $condition");
@@ -22,13 +29,18 @@ class Requisitionapp_model extends CI_Model {
     }
     function lists($limit,$start) {
         $department_id=$this->session->userdata('department_id');
+        $mlocation_id=$this->session->userdata('mlocation_id');
         $condition=' ';
+        if($mlocation_id!=''){
+          $condition=$condition."  AND l.mlocation_id='$mlocation_id' ";
+        }
         if(isset($_GET)){
           if($this->input->get('requisition_no')!=''){
             $requisition_no=$this->input->get('requisition_no');
             $condition=$condition."  AND pm.requisition_no='$requisition_no' ";
           }
-         }
+        }
+
         $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,l.location_name,
           d.department_name as responsible_department_name       
           FROM  requisition_master pm 

@@ -265,6 +265,7 @@ public function addUserForm($id=null){
             $data['mobile']=$this->input->post('mobile');
             $data['pa_limit']=$this->input->post('pa_limit');
             $data['post_id']=$this->input->post('post_id');
+            $data['mlocation_id']=$this->input->post('mlocation_id');
             $data['department_id']=$this->input->post('department_id');
             $data['org_id']=$this->session->userdata('org_id');
             $data['login_token']=substr(sha1(time()), 0, 50);

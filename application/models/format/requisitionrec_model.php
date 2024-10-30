@@ -16,7 +16,9 @@ class Requisitionrec_model extends CI_Model {
         $condition=$condition."  AND pm.department_id='$department_id1' ";
       }
      }
+
     $department_id=$this->session->userdata('department_id');
+    
     if($this->input->get('product_code')!=''){
       $query=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,
           d.department_name as responsible_department_name       
@@ -59,7 +61,12 @@ class Requisitionrec_model extends CI_Model {
             $condition=$condition."  AND pm.department_id='$department_id1' ";
           }
          }
-         $department_id=$this->session->userdata('department_id');
+          $department_id=$this->session->userdata('department_id');
+          $mlocation_id=$this->session->userdata('mlocation_id');
+          if($this->input->get('product_code')!=''){
+            $product_code=$this->input->get('product_code');
+            $condition=$condition."  AND pmd.product_code LIKE '%$product_code%' ";
+          }
         if($this->input->get('product_code')!=''){
           $result=$this->db->query("SELECT pm.*,pt.department_name,u.user_name,l.location_name,
           d.department_name as responsible_department_name       

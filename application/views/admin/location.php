@@ -27,8 +27,8 @@
                       <?php if(isset($info->mlocation_id))echo $rows->mlocation_id==$info->mlocation_id? 'selected="selected"':0; else
                        echo $rows->mlocation_id==set_value('mlocation_id')? 'selected="selected"':0; ?>><?php echo $rows->mlocation_name; ?></option>
                     <?php }  ?>
-                  </select>                    
-                  <span class="error-msg"><?php echo form_error("mlocation_id");?></span>
+                    </select>                    
+                    <span class="error-msg"><?php echo form_error("mlocation_id");?></span>
                   </div>
                   <label class="col-sm-2 control-label">Location Name<span style="color:red;">  *</span></label>
                   <div class="col-sm-3">

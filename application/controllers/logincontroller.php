@@ -50,6 +50,7 @@ class Logincontroller extends CI_Controller {
                 $this->session->set_userdata("medical_yes", $checkUser->medical_yes);
                 $this->session->set_userdata("org_name", $checkUser->org_name);
                 $this->session->set_userdata("stock_holder", $checkUser->stock_holder);
+                $this->session->set_userdata("mlocation_id", $checkUser->mlocation_id);
                 $this->session->set_userdata("post_name", $checkUser->post_name);
                 $this->session->set_userdata("user_type", $checkUser->super_user);
                 $this->session->set_userdata("department_id", $checkUser->department_id);
