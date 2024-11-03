@@ -88,7 +88,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Product Type <span style="color:red;">  *</span></label>
         <div class="col-sm-2">
-          <select class="form-control select2" name="product_type" id="product_type" onchange="return getSuppItem();">
+          <select class="form-control select2" name="product_type" id="product_type" >
             <option value="PRODUCT" 
               <?php if (isset($info))
                   echo "PRODUCT" == $info->product_type ? 'selected="selected"' : 0; else echo "PRODUCT" == set_value('product_type') ? 'selected="selected"' : 0;

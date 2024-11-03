@@ -31,7 +31,11 @@ hr{margin: 5px}
 </div>
  <div style="width:100%;overflow:hidden;text-align:center;margin-top: 0px;">
 <p style="line-height: 20px;padding: 0px 5px;font-size: 18px" >
-  <b>Purchase Indent(Safety Stock) <br>物料申购单 </b></p>
+  <b><?php if($info->product_type=='PRODUCT'){ ?>
+    Purchase Indent(<?php if($info->pi_type==1) echo "Safety Stock"; else echo "Fixed Asset"; ?>) <br>物料申购单 
+  <?php }else{ ?>
+    Service Indent <br>服務縮排
+  <?php } ?> </b></p>
 </div>
 <hr style="margin-top: 0px">
 <table style="width: 100%">

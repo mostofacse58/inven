@@ -51,7 +51,6 @@ class Deptrequisn_model extends CI_Model {
           AND pm.responsible_department=15
           ORDER BY pm.pi_id DESC")->result();
       }else{
-        echo "$pi_id";
         $result=$this->db->query("SELECT *, 1 as dddd
           FROM  pi_master  
           WHERE pi_status=$pi_status

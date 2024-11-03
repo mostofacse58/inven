@@ -32,7 +32,7 @@ var baseURL = '<?php echo base_url();?>';
  <div class="form-group">
   <label class="col-sm-2 control-label">Month</label>
   <div class="col-sm-4">
-    <input type="text" class="form-control month" readonly name="for_month" value="<?php if(isset($info))  echo $info->for_month; ?>">
+    <input type="text" class="form-control month"  name="for_month" value="<?php if(isset($info))  echo $info->for_month; ?>" required>
   </div>
    <label class="col-sm-2 control-label">Budget. NO</label>
   <div class="col-sm-4">
@@ -44,13 +44,12 @@ var baseURL = '<?php echo base_url();?>';
     <div class="table-responsive">
     <table class="table table-bordered" id="formtable" style="width: 100%">
   <thead>
-   <tr>
-    <th style="text-align:center;font-size: 16px;width: 5%;">SN</th>
-    <th style="text-align:center;font-size: 16px;width: 20%;">Account Head </th>
-    <th style="text-align:center;width: 10%;" valign="top">Budget</th>
+     <tr>
+      <th style="text-align:center;font-size: 16px;width: 5%;">SN</th>
+      <th style="text-align:center;font-size: 16px;width: 20%;">Account Head </th>
+      <th style="text-align:center;width: 10%;" valign="top">Budget</th>
       <th style="text-align:center;font-size: 16px;width: 10%;">Remarks</th>
-  </tr>
-
+    </tr>
   </thead>
   <?php 
     if(isset($hlist)){

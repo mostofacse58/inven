@@ -94,9 +94,11 @@ hr{margin: 5px}
 </div>
  <div style="width:100%;overflow:hidden;text-align:center;margin-top: 0px;">
 <p style="line-height: 20px;padding: 0px 5px;font-size: 18px" >
-  <b>Purchase Indent(
-    <?php if($info->pi_type==1) echo "Safety Stock"; 
-          else echo "Fixed Assets";  ?>)<br>物料申购单 </b></p>
+  <b><?php if($info->product_type=='PRODUCT'){ ?>
+    Purchase Indent(<?php if($info->pi_type==1) echo "Safety Stock"; else echo "Fixed Asset"; ?>) <br>物料申购单 
+  <?php }else{ ?>
+    Service Indent <br>服務縮排
+  <?php } ?> </b></p>
 </div>
 <hr style="margin-top: 0px">
 <table style="width: 100%" class="tg">
@@ -149,10 +151,12 @@ foreach ($updates as $value){
     <th style="width:25%;text-align:center">Material Name<br>(物料名称)</th>
     <th style="width:8%;text-align:center">Specification<br>(规格)</th>
     <th style="width:8%;text-align:center">Material Picture<br>(物料图片)</th>
+    <?php if($info->product_type=='PRODUCT'){ ?>
     <th style="width:7%;text-align:center;">Additional Qty<br>(额外数量)</th>
     <th style="width:7%;text-align:center;">Safety Qty<br>(安全数量)</th>
     <th style="width:7%;text-align:center;">Required Qty<br>(需求数量)</th>
     <th style="width:7%;text-align:center;">Stock Qty<br>(仓存数量)</th>
+    <?php } ?>
     <th style="width:7%;text-align:center;">Purchased Qty<br>(购买数量)</th>
     <th style="width:5%;text-align:center;">Unit(单位)</th>
     <th style="width:7%;text-align:center;">Unit price<br> 单价</th>
@@ -191,10 +195,12 @@ foreach ($updates as $value){
     <img src="<?php echo base_url();?>product/<?php echo $value->product_image; ?>" class="img-thumbnail" style="width:70px;height:auto;">
   </a>
     <?php }else{ echo "No Picture";} ?></td>
+    <?php if($info->product_type=='PRODUCT'){ ?>
     <td class="tg-s6z2"><?php echo "$value->additional_qty"; ?></td>
     <td class="tg-s6z2"><?php echo "$value->safety_qty"; ?></td>
     <td class="tg-s6z2"><?php echo "$value->required_qty"; ?></td>
     <td class="tg-s6z2"><?php echo "$value->stock_qty"; ?></td>
+    <?php } ?>
     <td class="tg-s6z2"><?php echo "$value->purchased_qty"; ?></td>
     <td class="tg-s6z2"><?php echo "$value->unit_name"; ?></td>
     <td class="tg-s6z2"><?php echo "$value->unit_price"; ?></td>
@@ -203,13 +209,15 @@ foreach ($updates as $value){
     <td class="tg-s6z2"><?php echo "$value->remarks"; ?></td>
   </tr>
    <?php }
- } ?>
+   } ?>
    <tr>
     <th sty colspan="5" style="text-align: right;" >Total</th>
+    <?php if($info->product_type=='PRODUCT'){ ?>
     <th class="tg-s6z2"></th>
     <th class="tg-s6z2"></th>
     <th class="tg-s6z2"><?php echo $totalreq; ?></th>
     <th class="tg-s6z2"></th>
+    <?php } ?>
     <th class="tg-s6z2"><?php echo $totalpur; ?></th>
     <th class="tg-s6z2"></th>
     <th class="tg-s6z2"></th>

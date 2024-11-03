@@ -31,8 +31,15 @@ hr{margin: 5px}
 <hr style="margin-top: 0px">
  <div style="width:100%;overflow:hidden;text-align:center;margin-top: 0px;">
 <p style="line-height: 20px;padding: 0px 5px;font-size: 18px;margin:3px 0px;" >
-  <b><?php if($info->po_type=='BD WO') echo "Workorder 采购单";
-else echo "(Bangladesh Fty)"; ?></b>
+  <b>
+    <?php if($info->product_type=='PRODUCT'){ ?>
+    <?php if($info->po_type=='BD WO') echo "Workorder 采购单";
+       else echo "(Bangladesh Fty)"; ?> 
+  <?php }else{ ?>
+    Service Order <br>服務訂單
+  <?php } ?>
+  
+</b>
 </p>
 </div>
 <table style="width: 100%">
