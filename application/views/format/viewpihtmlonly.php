@@ -178,6 +178,9 @@ foreach ($updates as $value){
     <th style="width:7%;text-align:center;">Unit price<br> 单价</th>
     <th style="width:7%;text-align:center;">Amount <br>总金额</th>
     <th style="width:4%;text-align:center;">Currency <br>货币</th>
+    <th style="width:10%;text-align:center;">PO Number</th>
+    <th style="width:10%;text-align:center;">Supplier</th>
+    <th style="width:4%;text-align:center;">File</th>
     <th style="width:12%;text-align:center;">Remarks<br>(备注)</th>
   </tr>
   <?php
@@ -222,6 +225,9 @@ foreach ($updates as $value){
     <td class="tg-s6z2"><?php echo "$value->unit_price"; ?></td>
     <td class="tg-s6z2"><?php echo "$value->amount"; ?></td>
     <td class="tg-s6z2"><?php echo "$value->currency"; ?></td>
+    <td class="tg-s6z2"><?php echo "$value->ponumber"; ?></td>
+    <td class="tg-s6z2"><?php echo "$value->supplier_name"; ?></td>
+    <td class="tg-s6z2"><?php echo "$value->file_no"; ?></td>
     <td class="tg-s6z2"><?php echo "$value->remarks"; ?></td>
   </tr>
    <?php }
@@ -240,6 +246,9 @@ foreach ($updates as $value){
     <th class="tg-s6z2"><?php 
     if($cncCheck==2) echo number_format($totalamount,2).' HKD'; 
     else  echo number_format($totalamount2,2).' '.$cnc; ?> </th>
+    <th class="tg-s6z2"></th>
+    <th class="tg-s6z2"></th>
+    <th class="tg-s6z2"></th>
     <th class="tg-s6z2"></th>
     <th class="tg-s6z2"></th>
   </tr>
