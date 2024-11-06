@@ -95,7 +95,7 @@
                         <?php $mdlist=$this->db->query("SELECT * FROM main_location")->result();
                         foreach($mdlist as $rows){  ?>
                         <option value="<?php echo $rows->mlocation_id; ?>" 
-                          <?php if(isset($info->mlocation_id))echo $rows->mlocation_id==$info->mlocation_id? 'selected="selected"':0; else
+                          <?php if(isset($user_info->mlocation_id))echo $rows->mlocation_id==$user_info->mlocation_id? 'selected="selected"':0; else
                            echo $rows->mlocation_id==set_value('mlocation_id')? 'selected="selected"':0; ?>><?php echo $rows->mlocation_name; ?></option>
                         <?php }  ?>
                         </select>                    

@@ -5,7 +5,7 @@ class Requisitionapp_model extends CI_Model {
       $mlocation_id=$this->session->userdata('mlocation_id');
       $condition=' ';
       if($mlocation_id!=''){
-          $condition=$condition."  AND l.mlocation_id='$mlocation_id' ";
+          $condition=$condition."  AND l.mlocation_id='$mlocation_id' AND pm.responsible_department=25 ";
         }
       
       if(isset($_GET)){
@@ -32,7 +32,7 @@ class Requisitionapp_model extends CI_Model {
         $mlocation_id=$this->session->userdata('mlocation_id');
         $condition=' ';
         if($mlocation_id!=''){
-          $condition=$condition."  AND l.mlocation_id='$mlocation_id' ";
+          $condition=$condition."  AND l.mlocation_id='$mlocation_id' AND pm.responsible_department=25 ";
         }
         if(isset($_GET)){
           if($this->input->get('requisition_no')!=''){
@@ -51,6 +51,7 @@ class Requisitionapp_model extends CI_Model {
           WHERE pm.department_id=$department_id AND pm.requisition_status>1 
           AND pm.general_or_tpm=1 AND pm.pr_type=1 $condition
           ORDER BY pm.requisition_status ASC LIMIT $start,$limit")->result();
+        //echo $this->db->last_query(); exit
         return $result;
     }
      
