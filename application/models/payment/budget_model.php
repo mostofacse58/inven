@@ -3,7 +3,7 @@ class Budget_model extends CI_Model {
     function lists() {
       $condition=' ';
       if($_GET){
-        if($this->input->get('bu')!=''){
+        if($this->input->get('budget_no')!=''){
           $budget_no=$this->input->get('budget_no');
           $condition=$condition."  AND a.budget_no='$budget_no' ";
         }

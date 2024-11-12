@@ -221,7 +221,7 @@ Download PDF
               <td style="text-align:center;">
                 <?php echo $row->FIFO_CODE;  ?></td> 
               <td style="vertical-align: text-top;text-align:center;">
-              <?php  echo "$row->quantity"; ?></td>
+              <?php  echo "$row->quantity $row->unit_name"; ?></td>
               <td style="vertical-align: text-top;text-align:center;">
               <?php  echo "$row->unit_price $row->currency"; ?></td>
               <td style="vertical-align: text-top;text-align:center;">

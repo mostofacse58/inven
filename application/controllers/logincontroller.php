@@ -26,7 +26,7 @@ class Logincontroller extends CI_Controller {
             $email_address = strtolower($email_address);  
             $password = $this->input->post('password');
             $trycheck = $this->login_model->trycheck($email_address);
-            if(count($trycheck)>0&&$trycheck->try_wrong_password>=4){
+            if(is_array($trycheck)&&$trycheck->try_wrong_password>=4){
               $this->session->set_userdata('exception', "Your account is locked. due to a 4 times password wrong!!");
                 redirect('logincontroller');
             }
@@ -77,7 +77,7 @@ class Logincontroller extends CI_Controller {
                 ON sys_user_role.menu_id=sys_menu.menu_id
                 WHERE sys_user_role.user_id=$user_id 
                 AND sys_menu.menu_indicator='Dispose_management'")->result();
-                if(count($checkdispose)>0){
+                if(is_array($checkdispose)){
                     $this->session->set_userdata("checkdispose", 1);
                 }else{
                     $this->session->set_userdata("checkdispose", 2);

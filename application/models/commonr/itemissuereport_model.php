@@ -27,11 +27,12 @@ class Itemissuereport_model extends CI_Model {
     $result=$this->db->query("SELECT sim.employee_name,
           iid.*,sim.issue_date,
           l.location_name,sim.employee_id,
-          d.department_name,sim.issue_for,sim.product_detail_id
+          d.department_name,sim.issue_for,sim.product_detail_id,u.unit_name
           FROM item_issue_detail iid
           INNER JOIN store_issue_master sim ON(iid.issue_id=sim.issue_id)
           INNER JOIN  product_info p ON(iid.product_id=p.product_id)
           LEFT JOIN department_info d ON(sim.take_department_id=d.department_id)
+          LEFT JOIN product_unit u ON(p.unit_id=u.unit_id)
           LEFT JOIN location_info l ON(sim.location_id=l.location_id)
           WHERE  sim.department_id=$department_id 
           $condition

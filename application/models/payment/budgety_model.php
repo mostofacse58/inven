@@ -3,7 +3,7 @@ class Budgety_model extends CI_Model {
     function lists() {
       $condition=' ';
       if($_GET){
-        if($this->input->get('bu')!=''){
+        if($this->input->get('budget_no')!=''){
           $budget_no=$this->input->get('budget_no');
           $condition=$condition."  AND a.budget_no='$budget_no' ";
         }
@@ -18,7 +18,8 @@ class Budgety_model extends CI_Model {
         $result=$this->db->query("SELECT a.*,d.department_name
             FROM budget_yearly_master a 
             INNER JOIN department_info d ON(d.department_id=a.by_department)
-            WHERE a.by_department=$department_id
+            WHERE a.by_department=$department_id 
+            $condition
             ORDER BY a.master_id DESC")->result();
         return $result;
     }
