@@ -26,7 +26,7 @@ class Logincontroller extends CI_Controller {
             $email_address = strtolower($email_address);  
             $password = $this->input->post('password');
             $trycheck = $this->login_model->trycheck($email_address);
-            if(is_array($trycheck)&&$trycheck->try_wrong_password>=4){
+            if(is_null($trycheck)&&$trycheck->try_wrong_password>=4){
               $this->session->set_userdata('exception', "Your account is locked. due to a 4 times password wrong!!");
                 redirect('logincontroller');
             }

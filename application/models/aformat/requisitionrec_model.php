@@ -37,7 +37,7 @@ class Requisitionrec_model extends CI_Model {
           LEFT JOIN user u ON(u.id=pm.requested_by) 
           WHERE pm.responsible_department=$department_id 
           AND pm.requisition_status>2 AND pm.pr_type=2 $condition
-          ORDER BY pm.requisition_status ASC  LIMIT $start,$limit")->result();
+          ORDER BY pm.requisition_status ASC,pm.requisition_date DESC  LIMIT $start,$limit")->result();
         return $result;
     }
 

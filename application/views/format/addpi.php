@@ -274,10 +274,10 @@ if(isset($info)){
    ?>
     var id=<?php echo count($detail); ?>;
     var pi_ids=<?php echo $info->pi_id; ?>;
-    var prid=12000+<?php echo count($detail); ?>;
+    var prid=30000+<?php echo count($detail); ?>;
   <?php }else{ ?>
     var id=0;
-    var prid=12000;
+    var prid=30000;
 <?php  } ?>
 
 var pinocheck=0;

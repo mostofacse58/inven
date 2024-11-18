@@ -9,7 +9,7 @@ class Requisitionrec extends My_Controller {
     function lists(){
       if($this->session->userdata('user_id')) {
       $data=array();
-      if($this->input->post('perpage')!='') $perpage=$this->input->post('perpage'); else $perpage=10;
+      if($this->input->post('perpage')!='') $perpage=$this->input->post('perpage'); else $perpage=20;
       ////////////////////////////////////
       $this->load->library('pagination');
       $config['base_url']=base_url().'aformat/requisitionrec/lists/';
