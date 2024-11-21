@@ -16,15 +16,16 @@ FROM (SELECT p.product_code,p.product_name,p.main_stock,
   WHERE p.product_id=t.product_id) as tpm_qty,
 (SELECT SUM(s.QUANTITY) FROM stock_master_detail s 
   WHERE p.product_id=s.product_id) as stockm
-FROM product_info p WHERE p.product_code='BZZ-GJ1-QT-39R143C'
+FROM product_info p WHERE p.product_code='B84-H54-W1100-C01'
 ) as C
 
-2209291413390001
+
+
 
 SELECT C.*,(issue_qty+stockm) as ddd 
 FROM (SELECT a.FIFO_CODE,SUM(a.quantity) as issue_qty, 
 (SELECT SUM(s.QUANTITY) FROM stock_master_detail s WHERE a.FIFO_CODE=s.FIFO_CODE) as stockm 
-FROM item_issue_detail a WHERE a.product_code='B71-C40-5G-W01' 
+FROM item_issue_detail a WHERE a.product_code='BZE-WJ1-NLST-W01' 
 GROUP BY a.FIFO_CODE ) as C;
 
 
@@ -39,7 +40,7 @@ FROM item_issue_detail a WHERE a.product_code='B71-C40-5G-W01' GROUP BY a.FIFO_C
 SELECT FIFO_CODE, SUM(`QUANTITY`) as qty, SUM(`TOTALAMT`) as amount,
 SUM(`TOTALAMT_HKD`) as hkd 
 FROM `stock_master_detail` 
-WHERE ITEM_CODE='B71-C40-5G-W01' 
+WHERE ITEM_CODE='BZE-WJ1-NLST-W01' 
 GROUP BY FIFO_CODE
 
 
@@ -375,16 +376,12 @@ WHERE currency='BDT' AND FIFO_CODE='2401020944100007';
 
 
 -- ///////////////////////////
-
 UPDATE `stock_master_detail` SET `TOTALAMT`=(QUANTITY*UPRICE) WHERE 1;
-
 UPDATE `stock_master_detail` SET `TOTALAMT_HKD`=(`QUANTITY`*`UPRICE`) WHERE CRRNCY='HKD';
-
 UPDATE `stock_master_detail` SET `TOTALAMT_HKD`=(`QUANTITY`*`UPRICE`*0.088) WHERE CRRNCY='BDT';
-
 UPDATE `stock_master_detail` SET `TOTALAMT_HKD`=(`QUANTITY`*`UPRICE`*1.1) WHERE CRRNCY='RMB';
-
 UPDATE `stock_master_detail` SET `TOTALAMT_HKD`=(`QUANTITY`*`UPRICE`*7.750) WHERE CRRNCY='USD';
+
 
 -- ////////////////
 UPDATE `item_issue_detail` SET  `sub_total`=(`quantity`*`unit_price`) WHERE 1;
@@ -416,6 +413,7 @@ UPDATE `spares_use_detail` SET `amount_hkd`=(`quantity`*`unit_price`*0.088) WHER
 UPDATE `spares_use_detail` SET `amount_hkd`=(`quantity`*`unit_price`*1.1) WHERE currency='RMB';
 
 UPDATE `spares_use_detail` SET `amount_hkd`=(`quantity`*`unit_price`*7.750) WHERE currency='USD';
+
 -- /////////////////////////////////////////////////
 -- ///////////////////////////////////////////////////
 

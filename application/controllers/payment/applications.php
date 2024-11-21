@@ -81,6 +81,7 @@ class Applications extends My_Controller {
       $data['display']='payment/add';
       $this->load->view('admin/master',$data);
   }
+
   function edit($payment_id){
     if ($this->session->userdata('user_id')) {
       $data['collapse']='YES';
@@ -298,11 +299,9 @@ class Applications extends My_Controller {
   }
   function getPOAmount(){
         $po_number = $this->input->post('po_number');
-
         $ammount=$this->db->query("SELECT IFNULL(SUM(a.pamount),0) as ammount 
           FROM payment_po_amount a 
           WHERE a.po_number='$po_number'")->row('ammount');
-        
         if($this->session->userdata('user_id')==1){
           $cngrn_amount=$this->db->query("SELECT IFNULL(SUM(a.grand_total),0) as grn_amount 
           FROM purchase_master_cn a 
@@ -312,8 +311,6 @@ class Applications extends My_Controller {
           FROM purchase_master a 
           WHERE a.po_number='$po_number' AND a.status!=5 ")->row('grn_amount');
         }        
-
-        
         $fourigit=substr($po_number,0,4);
         if($fourigit=='BDWA'){
           $info=$this->db->query("SELECT total_amount as amount, currency,discount_amount 

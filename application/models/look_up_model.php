@@ -166,6 +166,7 @@ class Look_up_model extends CI_Model {
       $condition) ")->result();
     }else{
       $result=$this->db->query("SELECT d.* FROM 
+
       (SELECT p.po_number FROM po_master p
       WHERE p.for_department_id=$department_id AND p.po_status=3
       AND p.total_amount>(SELECT IFNULL(SUM(a.pamount),0) as ammount 
@@ -180,6 +181,7 @@ class Look_up_model extends CI_Model {
       SELECT p.PO_NUMBER as po_number FROM bd_po_summary p
       WHERE p.TOTAL_AMT>(SELECT IFNULL(SUM(a.pamount),0) as ammount FROM payment_po_amount a 
       WHERE a.po_number=p.PO_NUMBER  $condition)
+      
       )as d GROUP By d.po_number ORDER BY d.po_number ASC")->result();
     }
     return $result;
