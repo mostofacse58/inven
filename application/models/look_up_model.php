@@ -502,7 +502,7 @@ class Look_up_model extends CI_Model {
 		    $this->ci_qr_code->generate($params); 
 			$qr_code_image_url = base_url().$qr_code_config['imagedir'].$image_name;
 			return $qr_code_image_url;
-			}
+		}
     public function qcode_functiongoods($code,$level='S',$size=2){     
       $this->load->library('ci_qr_code');
       $this->config->load('qr_code');
