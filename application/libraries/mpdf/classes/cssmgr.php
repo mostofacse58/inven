@@ -12,7 +12,7 @@ var $tbCSSlvl;
 var $listCSSlvl;
 
 
-function cssmgr(&$mpdf) {
+function __construct(&$mpdf) {
 	$this->mpdf = $mpdf;
 	$this->tablecascadeCSS = array();
 	$this->listcascadeCSS = array();
@@ -1116,14 +1116,21 @@ function _mergeBorders(&$b, &$a) {	// Merges $a['BORDER-TOP-STYLE'] to $b['BORDE
 
 
 function MergeCSS($inherit,$tag,$attr) {
-	$p = array();
+ 	$p = array();
 	$zp = array(); 
 
 	$classes = array();
 	if (isset($attr['CLASS'])) {
 		$classes = preg_split('/\s+/',$attr['CLASS']);
 	}
-	if (!isset($attr['ID'])) { $attr['ID']=''; }
+	if (!is_array($attr)) {
+	    $attr = []; // Convert $attr to an empty array if it's not an array
+	}
+
+	if (!isset($attr['ID'])) {
+	    $attr['ID'] = ''; // Initialize 'ID' key if it's not set
+	}
+	//if (!isset($attr['ID'])) { $attr['ID']=''; }
 	//===============================================
 /*-- TABLES --*/
 	// Set Inherited properties

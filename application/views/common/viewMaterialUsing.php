@@ -1,4 +1,6 @@
 <html>
+<meta charset="UTF-8">
+
 <style type="text/css">
   @media print{
             .print{ display:none;}
